@@ -22,7 +22,7 @@ export default function ProfileForm({ state, update }: Props) {
   const percent = ready && weightA > 0 ? (lose / weightA) * 100 : null;
 
   return (
-    <section className="rounded-3xl bg-white p-5 shadow-card ring-1 ring-line sm:p-6">
+    <section className="rounded-3xl bg-white p-5 shadow-card ring-1 ring-line sm:p-6 lg:self-stretch">
       <div className="space-y-5">
         <div>
           <label className={label} htmlFor="client-name">{intro.nameLabel}</label>
