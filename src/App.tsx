@@ -5,16 +5,20 @@ import LiveAnalysis from "./components/LiveAnalysis";
 import StateBlock from "./components/StateBlock";
 import ToolsBlock from "./components/ToolsBlock";
 import PlanBlock from "./components/PlanBlock";
+import { useState } from "react";
 import { useLocalStorage } from "./lib/useLocalStorage";
 import { initialState, type ClientState } from "./lib/types";
 
 export default function App() {
   const [state, setState, clear] = useLocalStorage<ClientState>("diagnostic-card:svitlana:v1", initialState);
+  // «Очистити» перемонтує блоки: відкривається перший напрямок, календар скидається
+  const [resetKey, setResetKey] = useState(0);
   const update = (patch: Partial<ClientState>) => setState((s) => ({ ...s, ...patch }));
 
   // «Очистити»: стираем данные и остаёмся на месте (без прыжка наверх)
   const onClear = () => {
     clear();
+    setResetKey((k) => k + 1);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -32,14 +36,14 @@ export default function App() {
           <LiveAnalysis state={state} update={update} blocks />
         </div>
 
-        <StateBlock state={state} update={update} />
+        <StateBlock key={`state-${resetKey}`} state={state} update={update} />
           </div>
         </div>
 
         <div className="bg-canvas">
           <div className="mx-auto max-w-[1440px] space-y-4 px-4 py-4 sm:px-6">
         <ToolsBlock state={state} update={update} />
-        <PlanBlock state={state} update={update} />
+        <PlanBlock key={`plan-${resetKey}`} state={state} update={update} />
 
         <div className="flex justify-center py-6">
           <button
