@@ -1,13 +1,10 @@
-import type { Currency } from "../config";
-
 export interface ClientState {
   name: string;
   profession: string;
-  incomeA: number; // в USD
-  incomeB: number; // в USD
+  weightA: number; // кг, 0 = не задано
+  weightB: number; // кг, 0 = не задано
   termMonths: number;
   employment: string;
-  currency: Currency;
   notes: Record<string, string>;
   /** Блок 2: рівні 1–5 по напрямках (0 = не обрано) */
   levels: Record<string, number>;
@@ -34,11 +31,10 @@ export interface PlanStep {
 export const initialState: ClientState = {
   name: "",
   profession: "",
-  incomeA: 0,
-  incomeB: 0,
+  weightA: 0,
+  weightB: 0,
   termMonths: 0,
   employment: "",
-  currency: "USD",
   notes: {},
   levels: {},
   tools: {},

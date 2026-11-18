@@ -6,19 +6,11 @@ import StateBlock from "./components/StateBlock";
 import ToolsBlock from "./components/ToolsBlock";
 import PlanBlock from "./components/PlanBlock";
 import { useLocalStorage } from "./lib/useLocalStorage";
-import { fromDisplay, snap, toDisplay } from "./lib/money";
 import { initialState, type ClientState } from "./lib/types";
-import type { Currency } from "./config";
 
 export default function App() {
   const [state, setState, clear] = useLocalStorage<ClientState>("diagnostic-card:svitlana:v1", initialState);
   const update = (patch: Partial<ClientState>) => setState((s) => ({ ...s, ...patch }));
-
-  // При смене валюты суммы подгоняем под шаг 50 в новой валюте
-  const changeCurrency = (cur: Currency) => {
-    const fit = (usd: number) => fromDisplay(snap(toDisplay(usd, cur)), cur);
-    update({ currency: cur, incomeA: fit(state.incomeA), incomeB: fit(state.incomeB) });
-  };
 
   // «Очистити»: стираем данные и остаёмся на месте (без прыжка наверх)
   const onClear = () => {
@@ -28,7 +20,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen">
-      <Header currency={state.currency} onCurrency={changeCurrency} />
+      <Header />
 
       <main>
         <div className="bg-canvas">
