@@ -57,8 +57,7 @@ export const config = {
     { key: "methods", tone: "rose", title: "Методи, які вже пробувала", question: "Що пробувала: харчування, чекап, вітаміни, спорт, мислення?", placeholder: "Запишіть відповідь..." },
     { key: "why", tone: "ink", title: "Чому це важливо зараз", question: "Чому це важливо вирішити саме зараз?", placeholder: "Запишіть відповідь..." },
     { key: "dream", tone: "ink", title: "Життя через рік", question: "Минув рік, і все склалось: яке твоє ідеальне життя?", placeholder: "Запишіть відповідь..." },
-    { key: "result", tone: "mint", title: "Найкращий результат розмови", question: "Що стане найкращим результатом розмови?", placeholder: "Запишіть відповідь..." },
-    { key: "pointB", tone: "mint", title: "Твоя «Точка Б»", question: "Яка точка Б за 2–3 місяці?", placeholder: "Запишіть відповідь..." },
+    { key: "result", tone: "mint", title: "Найкращий результат через 2–3 місяці", question: "Що стане найкращим результатом через 2–3 місяці?", placeholder: "Запишіть відповідь..." },
     { key: "ideal", tone: "mint", title: "Ідеальна «Точка Б»", question: "Яка ідеальна точка Б?", placeholder: "Запишіть відповідь..." },
   ],
 
@@ -67,7 +66,7 @@ export const config = {
     { key: "b1", placeholder: "Запишіть відповідь...", title: "Знайомство та запит", tone: "plain", keys: ["keywords", "problems"] },
     { key: "b2", placeholder: "Запишіть відповідь...", title: "Точка А", tone: "rose", keys: ["pointA", "health", "methods"] },
     { key: "b3", placeholder: "Запишіть відповідь...", title: "Мотивація та доповнення", tone: "ink", keys: ["why", "dream"] },
-    { key: "b4", placeholder: "Запишіть відповідь...", title: "Точка Б і результат зустрічі", tone: "mint", keys: ["result", "pointB", "ideal"] },
+    { key: "b4", placeholder: "Запишіть відповідь...", title: "Точка Б і результат зустрічі", tone: "mint", keys: ["result", "ideal"] },
   ],
 
   /** Блок 2: «Детальний аналіз твого організму»: 6 напрямків, 5 рівнів (1 = найнижчий) */
